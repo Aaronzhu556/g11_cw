@@ -15,10 +15,14 @@ public class ProviderServiceImpl implements ProviderService {
     @Autowired
     private ProviderMapper providerMapper;
     @Override
-    public List<Provider> getAll0Provider(QueryInfo queryInfo){
-        List<Provider> all0ServiceProvider = providerMapper.getAll0Provider();
+    public List<Provider> getAllProviderBy0(QueryInfo queryInfo){
+        List<Provider> all0ServiceProvider = providerMapper.getAllProviderBy0();
         List<Provider> list = (List<Provider>) PagingUtil.pagingData(all0ServiceProvider, queryInfo.getPageSize(), queryInfo.getPageNum());
         return list;
+    }
+    @Override
+    public List<Provider> getAllProviderBy1() {
+        return providerMapper.getAllProviderBy1();
     }
     @Override
     public int addProvider(Provider provider){
@@ -36,6 +40,7 @@ public class ProviderServiceImpl implements ProviderService {
 
     }
 
+
 //    @Override
 //    public int updateServiceProviderRating(int service_provider_id, float service_provider_rating) {
 //        return serviceProviderMapper.updateServiceProviderRating(service_provider_id,service_provider_rating);
@@ -47,8 +52,8 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
-    public List<Provider> getAll1Provider() {
-        return providerMapper.getAll1Provider();
+    public int updateProviderStatus(String pvis_approved, int pvid){
+        return providerMapper.updateProviderStatus(pvis_approved, pvid);
     }
 
 }

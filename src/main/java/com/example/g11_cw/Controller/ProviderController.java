@@ -22,10 +22,10 @@ public class ProviderController {
     @Autowired
     private ProviderService providerService;
 
-    @RequestMapping("/getall0provider")
+    @RequestMapping("/getallproviderby0")
     @ResponseBody
-    public Response getAll0Provider(@RequestBody QueryInfo queryInfo) {
-        return new Response("200", "查询成功", providerService.getAll0Provider(queryInfo));
+    public Response getAllProviderBy0(@RequestBody QueryInfo queryInfo) {
+        return new Response("200", "查询成功", providerService.getAllProviderBy0(queryInfo));
     }
 
     @RequestMapping("/addprovider")
@@ -58,11 +58,11 @@ public class ProviderController {
         }
     }
 
-    @RequestMapping("/getall1provider")
+    @RequestMapping("/getallproviderBy1")
     @ResponseBody
     public Response getAll1Provider() {
         try {
-            List<Provider> all1ServiceProvider = providerService.getAll1Provider();
+            List<Provider> all1ServiceProvider = providerService.getAllProviderBy1();
             if (all1ServiceProvider.size() != 0)
                 return Response.builder().res_code("200").res_msg("查询已激活的serviceProvider成功").res_object(all1ServiceProvider).build();
             else return Response.builder().res_code("201").res_msg("没有查到数据").res_object(null).build();
@@ -71,5 +71,16 @@ public class ProviderController {
             return Response.builder().res_code("202").res_msg("系统出错").res_object(null).build();
         }
 
+    }
+
+    @RequestMapping("/updateproviderstatus")
+    @ResponseBody
+    public Response updateProviderStatus(@RequestParam String pvis_status,@RequestParam int pvid){
+        int flag = providerService.updateProviderStatus(pvis_status, pvid);
+        if (flag!=0){
+            return new Response("200","修改成功",null);            
+        } else {
+            return new Response("201", "修改失败", null);
+        }
     }
 }

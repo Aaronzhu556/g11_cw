@@ -12,13 +12,10 @@ import java.util.List;
 public interface ProviderMapper {
 
     @Select("select * from provider where pvis_approved='0'")
-    List<Provider> getAll0Provider();
+    List<Provider> getAllProviderBy0();
 
     @Select("select * from provider where pvis_approved='1'")
-    List<Provider> getAll1Provider();
-
-    @Update("update provider set pvis_approved=#{pvis_approved} where pvid=#{pvid}")
-    int updateProviderStatus(String pvis_approved,int pvid);
+    List<Provider> getAllProviderBy1();
 
     @Insert("insert into provider(pvname,pvaddress,pvemail,pvdescription,pvphone,pvis_approved,pvpassword) values(#{pvname},#{pvaddress},#{pvemail},#{pvdescription},#{pvphone},#{pvis_approved},#{pvpassword})")
     int addProvider(Provider provider);
@@ -27,6 +24,7 @@ public interface ProviderMapper {
     Provider getProviderByEmail(String pvemail);
 
 //    int updateProviderRating(int pvid,float service_provider_rating);
-
+    @Update("update provider set pvis_approved=#{pvis_approved} where service_provider_id=#{pvid}")
+    int updateProviderStatus(String pvis_approved,int pvid);
     int deleteProvider(int pvid);
 }
