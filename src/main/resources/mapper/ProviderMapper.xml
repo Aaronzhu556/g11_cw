@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.g11_cw.Mapper.ProviderMapper">
+<!--    <update id="updateServiceProviderRating">-->
+<!--        update t_service_provider set-->
+<!--            service_provider_rating=#{service_provider_rating}-->
+<!--        where service_provider_id=#{service_provider_id}-->
+<!--    </update>-->
+
+    <update id="deleteProvider">
+        update provider set
+            pvis_approved='2'
+        where pvid=#{pvid}
+    </update>
+</mapper>

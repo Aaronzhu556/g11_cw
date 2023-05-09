@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class customer {
+public class Customer {
     private int cuid;
     private String cuname;
     private String cuemail;
@@ -16,10 +16,10 @@ public class customer {
     private String cuaddress;
     private String cuadvator;
 
-    public customer() {
+    public Customer() {
     }
 
-    public customer(int cuid, String cuname, String cuemail, String cudescription, String cupassword, String cuphone, String cuaddress, String cuadvator) {
+    public Customer(int cuid, String cuname, String cuemail, String cudescription, String cupassword, String cuphone, String cuaddress, String cuadvator) {
         this.cuid = cuid;
         this.cuname = cuname;
         this.cuemail = cuemail;

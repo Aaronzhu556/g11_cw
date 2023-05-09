@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class provider {
+public class Provider {
     private int pvid;
     private String pvname;
     private String pvaddress;
@@ -15,10 +15,10 @@ public class provider {
     private String pvis_approved;
     private String pvpassword;
 
-    public provider() {
+    public Provider() {
     }
 
-    public provider(int pvid, String pvname, String pvaddress, String pvemail, String pvdescription, String pvphone, String pvis_approved, String pvpassword) {
+    public Provider(int pvid, String pvname, String pvaddress, String pvemail, String pvdescription, String pvphone, String pvis_approved, String pvpassword) {
         this.pvid = pvid;
         this.pvname = pvname;
         this.pvaddress = pvaddress;

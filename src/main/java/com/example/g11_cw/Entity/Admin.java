@@ -5,19 +5,19 @@ import lombok.Data;
 
 @Data
 @Builder
-public class admin {
+public class Admin {
     private int adid;
     private String adname;
     private String adpassword;
     private String ademail;
 
-    public admin(int adid, String adname, String adpassword, String ademail) {
+    public Admin(int adid, String adname, String adpassword, String ademail) {
         this.adid = adid;
         this.adname = adname;
         this.adpassword = adpassword;
         this.ademail = ademail;
     }
 
-    public admin() {
+    public Admin() {
     }
 }
