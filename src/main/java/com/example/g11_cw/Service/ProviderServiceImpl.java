@@ -6,9 +6,11 @@ import com.example.g11_cw.QueryInfo.QueryInfo;
 import com.example.g11_cw.Service.Interface.ProviderService;
 import com.example.g11_cw.Utils.PagingUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProviderServiceImpl implements ProviderService {
     @Autowired
     private ProviderMapper providerMapper;

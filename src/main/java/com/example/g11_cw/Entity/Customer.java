@@ -14,12 +14,13 @@ public class Customer {
     private String cupassword;
     private String cuphone;
     private String cuaddress;
-    private String cuadvator;
+
+    private String cuicon;
 
     public Customer() {
     }
 
-    public Customer(int cuid, String cuname, String cuemail, String cudescription, String cupassword, String cuphone, String cuaddress, String cuadvator) {
+    public Customer(int cuid, String cuname, String cuemail, String cudescription, String cupassword, String cuphone, String cuaddress, String cuicon) {
         this.cuid = cuid;
         this.cuname = cuname;
         this.cuemail = cuemail;
@@ -27,6 +28,6 @@ public class Customer {
         this.cupassword = cupassword;
         this.cuphone = cuphone;
         this.cuaddress = cuaddress;
-        this.cuadvator = cuadvator;
+        this.cuicon = cuicon;
     }
 }

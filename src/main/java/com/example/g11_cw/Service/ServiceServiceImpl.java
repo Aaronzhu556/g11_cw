@@ -9,11 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+@org.springframework.stereotype.Service
 public class ServiceServiceImpl implements ServiceService {
     @Autowired
     private ServiceMapper serviceMapper;
     /**
-     * @param queryInfo 里面的queryInfo 在这个方法中，可能会以,拼接为一个字符串，分别代表pvaddress 和 scname 城市名称和服务类别
+     * @param queryInfo 分别代表pvaddress 和 scname 城市名称和服务类别
      * */
     @Override
     public List<Service> getAllService(QueryInfo queryInfo) {

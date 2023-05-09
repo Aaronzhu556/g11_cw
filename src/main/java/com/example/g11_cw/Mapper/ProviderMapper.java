@@ -2,11 +2,13 @@ package com.example.g11_cw.Mapper;
 
 import com.example.g11_cw.Entity.Provider;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
+@Mapper
 public interface ProviderMapper {
 
     @Select("select * from provider where pvis_approved='0'")
