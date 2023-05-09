@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class ProviderServiceImpl implements ProviderService {
-    @Autowired
+    @Autowired(required = false)
     private ProviderMapper providerMapper;
     @Override
     public List<Provider> getAllProviderBy0(QueryInfo queryInfo){

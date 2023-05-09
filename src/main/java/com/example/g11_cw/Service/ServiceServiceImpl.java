@@ -11,7 +11,7 @@ import java.util.List;
 
 @org.springframework.stereotype.Service
 public class ServiceServiceImpl implements ServiceService {
-    @Autowired
+    @Autowired(required = false)
     private ServiceMapper serviceMapper;
     /**
      * @param queryInfo 分别代表pvaddress 和 scname 城市名称和服务类别

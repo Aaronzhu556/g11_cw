@@ -78,7 +78,7 @@ public class ProviderController {
     public Response updateProviderStatus(@RequestParam String pvis_status,@RequestParam int pvid){
         int flag = providerService.updateProviderStatus(pvis_status, pvid);
         if (flag!=0){
-            return new Response("200","修改成功",null);            
+            return new Response("200","修改成功",null);
         } else {
             return new Response("201", "修改失败", null);
         }

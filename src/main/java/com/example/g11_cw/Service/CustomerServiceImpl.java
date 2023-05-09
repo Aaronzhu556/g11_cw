@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-    @Autowired
+    @Autowired(required = false)
     private CustomerMapper customerMapper;
 
     @Override
