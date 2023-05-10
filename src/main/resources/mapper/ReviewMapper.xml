@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.g11_cw.Mapper.ReviewMapper">
+    <select id="getAllReviewByReId" resultType="com.example.g11_cw.Entity.Review">
+        select * from review
+        where reid=#{reid}
+    </select>
+
+    <insert id="addReview">
+        insert into review(reid, rwrate, rwcomment, rwcomment)
+        VALUES(#{reid},#{rwrate},#{rwcomment},#{rwcomment})
+    </insert>
+
+    <delete id="deleteReview">
+        delete from review
+        where rwid=#{rwid}
+    </delete>
+</mapper>

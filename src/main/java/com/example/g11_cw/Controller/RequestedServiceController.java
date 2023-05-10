@@ -4,6 +4,7 @@ import com.example.g11_cw.Entity.RequestedService;
 import com.example.g11_cw.QueryInfo.QueryInfo;
 import com.example.g11_cw.Response.Response;
 import com.example.g11_cw.Service.Interface.RequestedServiceService;
+import com.example.g11_cw.Utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +18,11 @@ public class RequestedServiceController {
     @Autowired
     private RequestedServiceService requestedServiceService;
     // 获取当前时间
-    LocalDateTime now = LocalDateTime.now();
 
-    // 定义时间格式
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-    // 将当前时间转换为字符串
-    String currentTimeString = now.format(formatter);
 
     @RequestMapping("/addrequestservice")
     public Response addRequest(@RequestBody RequestedService requestedService){
-        requestedService.setSesubmit_time(currentTimeString);
+        requestedService.setSesubmit_time(TimeUtils.getCurrentDateTime());
         try {
             int i = requestedServiceService.addRequestedService(requestedService);
             if (i!=0) return Response.builder().res_code("200").res_msg("新增request成功").res_object(null).build();
@@ -54,7 +49,7 @@ public class RequestedServiceController {
     @RequestMapping("/updaterequeststatus")
     @ResponseBody
     public Response updateServiceProviderStatus(@RequestParam String sestatus, @RequestParam int reid){
-        int i = requestedServiceService.updateRequestedServiceByReId(reid, sestatus, currentTimeString);
+        int i = requestedServiceService.updateRequestedServiceByReId(reid, sestatus, TimeUtils.getCurrentDateTime());
         if (i!=0) return new Response("200","修改serviceProvider状态成功",null);
         else return new Response("201","修改serviceProvider状态失败",null);
 
