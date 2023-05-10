@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.g11_cw.Mapper.RequestedServiceMapper">
+    <select id="getAllRequestedServiceByCuId" resultType="com.example.g11_cw.Entity.RequestedService">
+        select * from request_service
+        where cuid=#{cuid}
+    </select>
+
+    <insert id="addRequestedService">
+        insert into request_service(cuid, seid, sestatus, sesubmit_time)
+        VALUES(#{cuid},#{seid},#{sestatus},#{sesubmit_time})
+    </insert>
+
+    <update id="updateRequestedServiceByReId">
+        update request_service set
+            sestatus=#{sestatus}
+            and
+            sefinish_time=#{sefinish_time}
+        where reid=#{reid}
+    </update>
+
+
+</mapper>
