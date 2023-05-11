@@ -55,7 +55,7 @@ public class ProviderController {
         }
     }
 
-    @RequestMapping("/getallproviderBy1")
+    @RequestMapping("/getallproviderby1")
     @ResponseBody
     public Response getAll1Provider() {
         try {
@@ -67,13 +67,13 @@ public class ProviderController {
             logger.info("=====系统出错" + e.toString());
             return Response.builder().res_code("202").res_msg("系统出错").res_object(null).build();
         }
-
     }
+
 
     @RequestMapping("/updateproviderstatus")
     @ResponseBody
-    public Response updateProviderStatus(@RequestParam String pvis_status,@RequestParam int pvid){
-        int flag = providerService.updateProviderStatus(pvis_status, pvid);
+    public Response updateProviderStatus(@RequestParam String pvis_approved,@RequestParam int pvid){
+        int flag = providerService.updateProviderStatus(pvis_approved, pvid);
         if (flag!=0){
             return new Response("200","修改成功",null);
         } else {

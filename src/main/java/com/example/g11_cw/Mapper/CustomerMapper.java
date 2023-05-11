@@ -20,8 +20,8 @@ public interface CustomerMapper {
     List<Customer> getAllCustomer();
 
     //设置用户描述
-    int setCustomerDescription(String description);
+    //int setCustomerDescription(String description);
 
 
-    List<Customer> getAllCustomerEmailByServiceId();
+   // List<Customer> getAllCustomerEmailByServiceId();
 }

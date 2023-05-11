@@ -5,9 +5,11 @@ import com.example.g11_cw.Entity.Review;
 import com.example.g11_cw.Mapper.ReviewMapper;
 import com.example.g11_cw.Service.Interface.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ReviewServiceImpl implements ReviewService {
 
     @Autowired(required = false)
