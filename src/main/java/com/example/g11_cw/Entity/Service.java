@@ -10,13 +10,18 @@ public class Service {
     private String seprice;
     private String seavailablity;
     private String seavailable_time;
-
     private String scname;
+
+    private String seaddress;
+    private String sename;
+
 
     public Service() {
     }
 
-    public Service(int seid, String pvid, String sedescription, String seprice, String seavailablity, String seavailable_time, String scname) {
+    public Service(int seid, String pvid, String sedescription, String seprice,
+                   String seavailablity, String seavailable_time, String scname,
+                   String seaddress, String sename) {
         this.seid = seid;
         this.pvid = pvid;
         this.sedescription = sedescription;
@@ -24,5 +29,8 @@ public class Service {
         this.seavailablity = seavailablity;
         this.seavailable_time = seavailable_time;
         this.scname = scname;
+
+        this.seaddress = seaddress;
+        this.sename = sename;
     }
 }

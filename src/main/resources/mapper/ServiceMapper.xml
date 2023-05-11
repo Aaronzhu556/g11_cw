@@ -4,11 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.g11_cw.Mapper.ServiceMapper">
     <select id="getAllService" resultType="com.example.g11_cw.Entity.Service">
-        select  * from service s
-        join provider p
-        ON s.pvid == p.pvid
-        where  pvaddress like #{pvaddress} and scname like #{scname}
-
+        select  * from service
+        where seavailablity = '1'
+        <if test="sename != null ">
+            and sename = #{sename}
+        </if>
+        <if test="seaddress != null ">
+            and seaddress = #{seaddress}
+        </if>
+        <if test="scname != null ">
+            and scname=#{scname}
+        </if>
 
     </select>
     <insert id="addService" parameterType="com.example.g11_cw.Entity.Service" useGeneratedKeys="true" keyProperty="seid">

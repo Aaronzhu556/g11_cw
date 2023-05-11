@@ -8,9 +8,8 @@ import java.util.List;
 @Mapper
 public interface ServiceMapper {
 
-//    List<Service> getAllService(String service_name, String service_area, String service_category);
 
-    List<Service> getAllService(String pvaddress, String scname);
+    List<Service> getAllService(String sename, String seaddress, String scname);
 
     int addService(Service service);
     int updateService(Service service);

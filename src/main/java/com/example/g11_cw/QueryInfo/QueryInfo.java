@@ -1,8 +1,11 @@
 package com.example.g11_cw.QueryInfo;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Builder
 public class QueryInfo {
     private String queryInfo;
     private int pageSize;
@@ -13,4 +16,5 @@ public class QueryInfo {
         this.pageSize = pageSize;
         this.pageNum = pageNum;
     }
+    public QueryInfo(){}
 }
