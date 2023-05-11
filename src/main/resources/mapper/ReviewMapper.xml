@@ -9,8 +9,8 @@
     </select>
 
     <insert id="addReview">
-        insert into review(reid, rwrate, rwcomment, rwcomment)
-        VALUES(#{reid},#{rwrate},#{rwcomment},#{rwcomment})
+        insert into review(reid, rwrate, rwcomment)
+        VALUES(#{reid},#{rwrate},#{rwcomment})
     </insert>
 
     <delete id="deleteReview">

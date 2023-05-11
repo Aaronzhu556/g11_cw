@@ -17,8 +17,6 @@ import java.util.List;
 public class RequestedServiceController {
     @Autowired
     private RequestedServiceService requestedServiceService;
-    // 获取当前时间
-
 
     @RequestMapping("/addrequestservice")
     public Response addRequest(@RequestBody RequestedService requestedService){
