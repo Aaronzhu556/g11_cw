@@ -10,6 +10,8 @@ public interface RequestedServiceMapper {
 
     List<RequestedService> getAllRequestedServiceByCuId(int cuid);
 
+    List<RequestedService> getAllRequestedServiceBySeId(int seid);
+
     int addRequestedService(RequestedService requestedService);
 
     int updateRequestedServiceByReId(int reid, String sestatus, String sefinish_time);

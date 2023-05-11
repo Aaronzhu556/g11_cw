@@ -1,15 +1,19 @@
 package com.example.g11_cw.Controller;
 
+import com.example.g11_cw.Entity.RequestedService;
 import com.example.g11_cw.Entity.Review;
 import com.example.g11_cw.Entity.Service;
 import com.example.g11_cw.QueryInfo.QueryInfo;
 import com.example.g11_cw.Response.Response;
+import com.example.g11_cw.Service.Interface.RequestedServiceService;
 import com.example.g11_cw.Service.Interface.ReviewService;
+import com.example.g11_cw.Service.Model.ServiceReviewModel;
 import com.example.g11_cw.Utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -20,6 +24,8 @@ public class ReviewController {
 
     private ReviewService reviewService;
 
+    private RequestedServiceService requestedServiceService;
+
 
     @RequestMapping("/getreviews")
     public Response getReviews(@RequestBody int reid){
@@ -29,6 +35,30 @@ public class ReviewController {
             if (allreview.size() != 0) return new Response("200","查询成功",allreview);
             else return new Response("201","没有数据",null);
         }catch (Exception e) {
+            return new Response("202","查询出错",null);
+        }
+    }
+
+    @RequestMapping("/getreviewbyseid")
+    public Response getReviewsBySeid(@RequestBody int seid){
+        try {
+            List<ServiceReviewModel> serviceReviewModel = new ArrayList<>();
+            List<RequestedService> requestedService = requestedServiceService.getAllRequestedServiceBySeId(seid);
+            for(RequestedService request_iter : requestedService){
+               List<Review> reviewbyseid = reviewService.getAllReviewByReId(request_iter.getReid());
+               for(Review review_iter : reviewbyseid){
+                   serviceReviewModel.add(new ServiceReviewModel(
+                           review_iter.getRwid(),
+                           review_iter.getReid(),
+                           request_iter.getSeid(),
+                           review_iter.getRwrate(),
+                           review_iter.getRwcomment(),
+                           review_iter.getRwtime()));
+               }
+            }
+            if (serviceReviewModel.size() != 0) return new Response("200","查询成功",serviceReviewModel);
+            else return new Response("201","没有数据",null);
+        } catch (Exception e){
             return new Response("202","查询出错",null);
         }
     }

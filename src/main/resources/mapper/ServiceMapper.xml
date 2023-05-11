@@ -10,7 +10,6 @@
         where  pvaddress like #{pvaddress} and scname like #{scname}
 
 
-
     </select>
     <insert id="addService" parameterType="com.example.g11_cw.Entity.Service" useGeneratedKeys="true" keyProperty="seid">
         insert into service (seid, pvid, sedescription, seprice, seavailablity, seavailable_time, scname)

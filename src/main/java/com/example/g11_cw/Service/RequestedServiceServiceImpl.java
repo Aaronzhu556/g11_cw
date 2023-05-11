@@ -18,6 +18,11 @@ public class RequestedServiceServiceImpl implements RequestedServiceService {
     }
 
     @Override
+    public List<RequestedService> getAllRequestedServiceBySeId(int seid) {
+        return requestedServiceMapper.getAllRequestedServiceBySeId(seid);
+    }
+
+    @Override
     public int addRequestedService(RequestedService requestedService) {
         return requestedServiceMapper.addRequestedService(requestedService);
     }

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.g11_cw.Mapper.RequestedServiceMapper">
     <select id="getAllRequestedServiceByCuId" resultType="com.example.g11_cw.Entity.RequestedService">
-        select * from request_service
+        select * from requested_service
         where cuid=#{cuid}
     </select>
 

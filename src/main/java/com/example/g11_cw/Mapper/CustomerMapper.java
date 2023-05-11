@@ -19,5 +19,9 @@ public interface CustomerMapper {
     @Select("select * from customer")
     List<Customer> getAllCustomer();
 
+    //设置用户描述
+    int setCustomerDescription(String description);
+
+
     List<Customer> getAllCustomerEmailByServiceId();
 }

@@ -21,7 +21,11 @@ public class ServiceController {
     public Response getAllService(@RequestBody QueryInfo queryInfo){
 
         try {
+            //QueryInfo queryInfo = QueryInfo.builder().queryInfo(queryInfoModel.getQueryName()+","+queryInfoModel.getQueryArea()+","+queryInfoModel.getQueryCategory()).pageNum(queryInfoModel.getPageNum()).pageSize(queryInfoModel.getPageSize()).build();
             List<Service> allService = serviceService.getAllService(queryInfo);
+
+
+
             if (allService.size() != 0) return new Response("200","查询成功",allService);
             else return new Response("201","没有数据",null);
         }catch (Exception e) {

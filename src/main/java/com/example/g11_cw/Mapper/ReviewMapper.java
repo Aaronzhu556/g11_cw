@@ -11,6 +11,8 @@ public interface ReviewMapper {
 
     List<Review> getAllReviewByReId(int reid);
 
+    //List<Review> getServiceReviewBySeid(int seid);
+
     int addReview(Review review);
 
     int deleteReview(int rwid);
