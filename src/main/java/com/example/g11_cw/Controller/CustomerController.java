@@ -27,6 +27,7 @@ public class CustomerController {
         if (customer != null) return new Response("200","查询成功",customer);
         else return new Response("201","查询失败",null);
     }
+
     @RequestMapping("/addcustomer")
     @ResponseBody
     public Response addCustomer(@RequestBody Customer customer){//这里接收的参数要修改

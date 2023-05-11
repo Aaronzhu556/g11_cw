@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.g11_cw.Mapper.AdminMapper">
+    <update id="updateAdmin" parameterType="com.example.g11_cw.Entity.Admin">
+        update admin set
+                           adid=#{adid},
+                           adname=#{adname},
+                           ademail=#{ademail},
+                           adpassword=#{adpassword},
+                           where adid = #{adid}
+    </update>
+</mapper>
