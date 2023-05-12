@@ -79,4 +79,12 @@ public class ProviderController {
             return new MyResponse("201", "修改失败", null);
         }
     }
+
+    @RequestMapping("checkprovider")
+    @ResponseBody
+    public MyResponse checkProvider(@RequestParam int id,@RequestParam String approve){
+        int i = providerService.updateProviderStatus(approve, id);
+        if (i==1) return new  MyResponse("200","修改状态成功",null);
+        else return new MyResponse("201", "修改状态失败", null);
+    }
 }

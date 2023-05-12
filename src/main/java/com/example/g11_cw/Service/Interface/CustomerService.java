@@ -21,4 +21,6 @@ public interface CustomerService {
     public String customerLogin(Customer customer);
 
     int updateCustomerInfo(Customer customer);
+
+    int setCustomerDescription(int cuid,String cudescription);
 }

@@ -27,4 +27,6 @@ public interface ProviderMapper {
     @Update("update provider set pvis_approved=#{pvis_approved} where pvid=#{pvid}")
     int updateProviderStatus(String pvis_approved,int pvid);
     int deleteProvider(int pvid);
+
+
 }

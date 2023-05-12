@@ -59,4 +59,9 @@ public class CustomerServiceImpl implements CustomerService {
     public int updateCustomerInfo(Customer customer) {
         return customerMapper.updateCustomerInfo(customer);
     }
+
+    @Override
+    public int setCustomerDescription(int cuid, String cudescription) {
+        return customerMapper.setCustomerDescription(cuid,cudescription);
+    }
 }

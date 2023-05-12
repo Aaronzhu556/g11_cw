@@ -73,7 +73,15 @@ public class CustomerController {
     public MyResponse updateCustomerInfo(@RequestBody Customer customer){
         int i = customerService.updateCustomerInfo(customer);
         Customer customerByEmail = customerService.getCustomerByEmail(customer.getCuemail());
-        return new MyResponse("200","修改成功",customerByEmail);
+        if (i==1) return new MyResponse("200","修改成功",customerByEmail);
+        else return new MyResponse("201","修改失败",null);
+    }
 
+    @RequestMapping("/setcustomerdescription")
+    @ResponseBody
+    public MyResponse setCustomerDescription(@RequestParam int id,@RequestParam String description){
+        int i = customerService.setCustomerDescription(id, description);
+        if (i==1) return new MyResponse("200","修改成功",null);
+        else return new MyResponse("201","修改失败",null);
     }
 }

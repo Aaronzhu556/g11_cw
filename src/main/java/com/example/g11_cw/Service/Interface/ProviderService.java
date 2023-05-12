@@ -16,4 +16,6 @@ public interface ProviderService {
 
     public int updateProviderStatus(String pvis_approved,int pvid);
 
+
+
 }

@@ -13,6 +13,12 @@
             cupassword=#{cupassword}
         where cuid=#{cuid}
     </update>
+    <update id="setCustomerDescription">
+        update customer set
+            cudescription=#{cudescription}
+        where cuid = #{cuid}
+
+    </update>
 
     <select id="getAllCustomerEmailByServiceId" resultType="com.example.g11_cw.Entity.Customer">
         select cuemail from customer where cuid=#{cuid}

@@ -22,7 +22,7 @@ public interface CustomerMapper {
     List<Customer> getAllCustomer();
 
     //设置用户描述
-    int setCustomerDescription(String description);
+    int setCustomerDescription(int cuid,String cudescription);
 
 
     List<Customer> getAllCustomerEmailByServiceId();
