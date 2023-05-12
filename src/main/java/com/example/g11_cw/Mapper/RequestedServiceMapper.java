@@ -14,6 +14,6 @@ public interface RequestedServiceMapper {
 
     int addRequestedService(RequestedService requestedService);
 
-    int updateRequestedServiceByReId(int reid, String sestatus, String sefinish_time);
+    int updateRequestedStatusByReId(int reid, String sestatus);
 
 }

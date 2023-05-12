@@ -27,25 +27,26 @@ public class ServiceServiceImpl implements ServiceService {
         String[] strs = queryInfo.getQueryInfo().split(",");
 
 
-        for (int j=0;j<strs.length;j++) splitStrings[j] = strs[j];
+        for (int j=0;j<strs.length;j++) {
+            if (!strs[j].equals("")) splitStrings[j] = strs[j];
+        }
+
         logger.info("string有"+splitStrings.length+"个");
-        for (String s:splitStrings
-        ) {
+        for (String s:splitStrings) {
             logger.info("str有:"+s);
         }
         List<com.example.g11_cw.Entity.Service> allService = serviceMapper.getAllService(splitStrings[0], splitStrings[1],splitStrings[2]);
-
 
         return allService;
     }
 
     @Override
     public int addService(Service service) {
-        return 0;
+        return serviceMapper.addService(service);
     }
 
     @Override
     public int updateService(Service service) {
-        return 0;
+        return serviceMapper.updateService(service);
     }
 }

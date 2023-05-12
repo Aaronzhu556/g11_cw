@@ -57,6 +57,7 @@ public class ServiceController {
             if (i!=0) return new MyResponse("200","修改service成功",null);
             else return new MyResponse("201","修改service失败",null);
         }catch (Exception e){
+            System.out.println(e);
             return MyResponse.builder().code("202").msg("系统出错").info(null).build();
         }
     }

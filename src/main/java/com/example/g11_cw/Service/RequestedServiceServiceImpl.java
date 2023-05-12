@@ -28,7 +28,10 @@ public class RequestedServiceServiceImpl implements RequestedServiceService {
     }
 
     @Override
-    public int updateRequestedServiceByReId(int reid, String sestatus, String sefinish_time) {
-        return requestedServiceMapper.updateRequestedServiceByReId(reid, sestatus, sefinish_time);
+//    public int updateRequestedStatusByReId(int reid, String sestatus, String sefinish_time) {
+//        return requestedServiceMapper.updateRequestedStatusByReId(reid, sestatus, sefinish_time);
+//    }
+    public int updateRequestedStatusByReId(int reid, String sestatus) {
+        return requestedServiceMapper.updateRequestedStatusByReId(reid, sestatus);
     }
 }

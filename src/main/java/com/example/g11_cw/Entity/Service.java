@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Service {
     private int seid;
-    private String pvid;
+    private int pvid;
     private String sedescription;
     private String seprice;
     private String seavailablity;
@@ -19,7 +19,7 @@ public class Service {
     public Service() {
     }
 
-    public Service(int seid, String pvid, String sedescription, String seprice,
+    public Service(int seid, int pvid, String sedescription, String seprice,
                    String seavailablity, String seavailable_time, String scname,
                    String seaddress, String sename) {
         this.seid = seid;

@@ -17,21 +17,21 @@ public class RequestedService {
 
     private String sefinish_time;
 
-    private String recustomer_phone;
-
-    private String recustomer_address;
+//    private String recustomer_phone;
+//
+//    private String recustomer_address;
 
     public RequestedService() {
     }
 
-    public RequestedService(int reid, int cuid, int seid, String sestatus, String sesubmit_time, String sefinish_time, String recustomer_phone, String recustomer_address) {
+    public RequestedService(int reid, int cuid, int seid, String sestatus, String sesubmit_time, String sefinish_time) {//String recustomer_phone, String recustomer_address
         this.reid = reid;
         this.cuid = cuid;
         this.seid = seid;
         this.sestatus = sestatus;
         this.sesubmit_time = sesubmit_time;
         this.sefinish_time = sefinish_time;
-        this.recustomer_phone = recustomer_phone;
-        this.recustomer_address = recustomer_address;
+//        this.recustomer_phone = recustomer_phone;
+//        this.recustomer_address = recustomer_address;
     }
 }

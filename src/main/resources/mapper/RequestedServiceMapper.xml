@@ -8,18 +8,20 @@
         where cuid=#{cuid}
     </select>
 
+    <select id="getAllRequestedServiceBySeId" resultType="com.example.g11_cw.Entity.RequestedService">
+        select * from requested_service
+        where seid=#{seid}
+    </select>
+
     <insert id="addRequestedService">
-        insert into request_service(cuid, seid, sestatus, sesubmit_time)
+        insert into requested_service(cuid, seid, sestatus, sesubmit_time)
         VALUES(#{cuid},#{seid},#{sestatus},#{sesubmit_time})
     </insert>
 
-    <update id="updateRequestedServiceByReId">
-        update request_service set
-            sestatus=#{sestatus}
-            and
-            sefinish_time=#{sefinish_time}
-        where reid=#{reid}
+    <update id="updateRequestedStatusByReId">
+        update requested_service set
+            sestatus = #{sestatus}
+        where reid = #{reid}
     </update>
-
 
 </mapper>

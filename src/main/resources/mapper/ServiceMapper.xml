@@ -7,19 +7,20 @@
         select  * from service
         where seavailablity = '1'
         <if test="sename != null ">
-            and sename = #{sename}
+            and sename like concat('%',#{sename},'%')
         </if>
         <if test="seaddress != null ">
-            and seaddress = #{seaddress}
+            and seaddress like  concat('%',#{seaddress},'%')
         </if>
         <if test="scname != null ">
-            and scname=#{scname}
+            and scname like concat('%',#{scname},'%')
         </if>
-
     </select>
+
+
     <insert id="addService" parameterType="com.example.g11_cw.Entity.Service" useGeneratedKeys="true" keyProperty="seid">
-        insert into service (seid, pvid, sedescription, seprice, seavailablity, seavailable_time, scname)
-        VALUES (#{seid},#{pvid},#{sedescription},#{seprice},#{seavailablity},#{seavailable_time},#{scname})
+        insert into service(pvid, sedescription, seprice, seavailablity, seavailable_time, scname, sename, seaddress)
+        VALUES (#{pvid},#{sedescription},#{seprice},#{seavailablity},#{seavailable_time},#{scname},#{sename},#{seaddress})
     </insert>
 
     <update id="updateService" parameterType="com.example.g11_cw.Entity.Service">
@@ -29,8 +30,9 @@
             sedescription=#{sedescription},
             seprice=#{seprice},
             seavailablity=#{seavailablity},
+            seaddress=#{seaddress},
             seavailable_time=#{seavailable_time},
-            scname=#{scname},
+            scname=#{scname}
         where seid = #{seid}
     </update>
 </mapper>

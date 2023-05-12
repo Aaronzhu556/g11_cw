@@ -27,6 +27,7 @@ public class ProviderController {
     @RequestMapping("/addprovider")
     @ResponseBody
     public MyResponse addProvider(@RequestBody Provider serviceProvider) {
+        serviceProvider.setPvis_approved("0");
         int i = providerService.addProvider(serviceProvider);
         if (i != 0) return new MyResponse("200", "注册成功,请等待管理员审核", null);
         else return new MyResponse("201", "该邮箱已经注册了账号", null);
