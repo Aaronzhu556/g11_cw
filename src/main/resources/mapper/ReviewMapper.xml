@@ -8,9 +8,9 @@
         where reid=#{reid}
     </select>
 
-    <insert id="addReview">
-        insert into review(reid, rwrate, rwcomment)
-        VALUES(#{reid},#{rwrate},#{rwcomment})
+    <insert id="addReview" useGeneratedKeys="true" keyProperty="rwid">
+        insert into review(reid, rwrate, rwcomment, rwtime)
+        VALUES(#{reid},#{rwrate},#{rwcomment},#{rwtime})
     </insert>
 
     <delete id="deleteReview">

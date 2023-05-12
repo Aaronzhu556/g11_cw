@@ -7,6 +7,9 @@ import com.example.g11_cw.Service.Interface.RequestedServiceService;
 import com.example.g11_cw.Service.Interface.ReviewService;
 import com.example.g11_cw.Service.Model.ServiceReviewModel;
 import com.example.g11_cw.Utils.TimeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,12 +20,13 @@ import java.util.List;
 @RequestMapping("/review")
 public class ReviewController {
 
-
+    @Autowired
     private ReviewService reviewService;
 
+    @Autowired
     private RequestedServiceService requestedServiceService;
 
-
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @RequestMapping("/getreviews")
     public MyResponse getReviews(@RequestBody int reid){
 
@@ -36,13 +40,13 @@ public class ReviewController {
     }
 
     @RequestMapping("/getreviewbyseid")
-    public MyResponse getReviewsBySeid(@RequestBody int seid){
+    public MyResponse getReviewsBySeid(@RequestParam int reid){
         try {
             List<ServiceReviewModel> serviceReviewModel = new ArrayList<>();
-            List<RequestedService> requestedService = requestedServiceService.getAllRequestedServiceBySeId(seid);
+            List<RequestedService> requestedService = requestedServiceService.getAllRequestedServiceBySeId(reid);
             for(RequestedService request_iter : requestedService){
-               List<Review> reviewbyseid = reviewService.getAllReviewByReId(request_iter.getReid());
-               for(Review review_iter : reviewbyseid){
+               List<Review> reviewbyreid = reviewService.getAllReviewByReId(request_iter.getReid());
+               for(Review review_iter : reviewbyreid){
                    serviceReviewModel.add(new ServiceReviewModel(
                            review_iter.getRwid(),
                            review_iter.getReid(),
@@ -55,6 +59,7 @@ public class ReviewController {
             if (serviceReviewModel.size() != 0) return new MyResponse("200","查询成功",serviceReviewModel);
             else return new MyResponse("201","没有数据",null);
         } catch (Exception e){
+            logger.info(String.valueOf(e));
             return new MyResponse("202","查询出错",null);
         }
     }
@@ -68,6 +73,7 @@ public class ReviewController {
             else return new MyResponse("201","新增review失败,请重试",null);
         }
         catch (Exception e){
+            logger.info(String.valueOf(e));
             return new MyResponse("202","系统出错",null);
         }
     }
@@ -79,6 +85,7 @@ public class ReviewController {
             if (i!=0) return MyResponse.builder().code("200").msg("删除成功").info(null).build();
             else return MyResponse.builder().code("201").msg("删除失败").info(null).build();
         }catch (Exception e){
+            logger.info("====系统错误");
             return MyResponse.builder().code("202").msg("系统出错").info(null).build();
         }
     }

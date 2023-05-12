@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
-        @Autowired(required = false)
+    @Autowired(required = false)
     ReviewMapper reviewMapper;
 
     @Override
