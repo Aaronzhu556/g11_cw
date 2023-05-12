@@ -17,4 +17,6 @@ public interface CustomerService {
 //    public String getUserVerificationCode(String cuemail);
 
     public String customerLogin(Customer customer);
+
+    int updateCustomerInfo(Customer customer);
 }

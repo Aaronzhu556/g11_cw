@@ -54,4 +54,9 @@ public class CustomerServiceImpl implements CustomerService {
             return "202";//没有此账号
         }
     }
+
+    @Override
+    public int updateCustomerInfo(Customer customer) {
+        return customerMapper.updateCustomerInfo(customer);
+    }
 }

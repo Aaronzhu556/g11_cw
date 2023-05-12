@@ -12,4 +12,6 @@ public interface AdminMapper {
 
     int updateAdmin(Admin admin);
 
+
+
 }

@@ -4,6 +4,7 @@ import com.example.g11_cw.Entity.Customer;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -25,4 +26,7 @@ public interface CustomerMapper {
 
 
     List<Customer> getAllCustomerEmailByServiceId();
+
+
+    int updateCustomerInfo(Customer customer);
 }

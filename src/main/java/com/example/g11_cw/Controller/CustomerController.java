@@ -2,12 +2,11 @@ package com.example.g11_cw.Controller;
 
 import com.example.g11_cw.Entity.Customer;
 import com.example.g11_cw.QueryInfo.QueryInfo;
-import com.example.g11_cw.Response.Response;
+import com.example.g11_cw.Response.MyResponse;
 import com.example.g11_cw.Service.Interface.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,25 +21,25 @@ public class CustomerController {
 
     @RequestMapping("/getuserbyemail")
     @ResponseBody
-    public Response getCustomerByEmail(@RequestParam String cuemail){
+    public MyResponse getCustomerByEmail(@RequestParam String cuemail){
         Customer customer = customerService.getCustomerByEmail(cuemail);
-        if (customer != null) return new Response("200","查询成功",customer);
-        else return new Response("201","查询失败",null);
+        if (customer != null) return new MyResponse("200","查询成功",customer);
+        else return new MyResponse("201","查询失败",null);
     }
 
     @RequestMapping("/addcustomer")
     @ResponseBody
-    public Response addCustomer(@RequestBody Customer customer){//这里接收的参数要修改
+    public MyResponse addCustomer(@RequestBody Customer customer){//这里接收的参数要修改
         int i = customerService.addCustomer(customer);
-        if (i==1) return  Response.builder().res_code("200").res_msg("用户注册成功").res_object(null).build();
-        else if(i==2) return Response.builder().res_code("201").res_msg("验证码错误").res_object(null).build();
-        else return Response.builder().res_code("202").res_msg("用户注册失败").res_object(null).build();
+        if (i==1) return  MyResponse.builder().code("200").msg("用户注册成功").info(null).build();
+        else if(i==2) return MyResponse.builder().code("201").msg("验证码错误").info(null).build();
+        else return MyResponse.builder().code("202").msg("用户注册失败").info(null).build();
     }
     @RequestMapping("/getallcustomer")
     @ResponseBody
-    public Response getAllCustomer(@RequestBody QueryInfo queryInfo){
+    public MyResponse getAllCustomer(@RequestBody QueryInfo queryInfo){
         List<Customer> allUser = customerService.getAllCustomer(queryInfo);
-        return new Response("200","查询所有用户成功",allUser);
+        return new MyResponse("200","查询所有用户成功",allUser);
     }
 //    @RequestMapping("/getuserverificationcode")
 //    @ResponseBody
@@ -56,16 +55,25 @@ public class CustomerController {
 //    }
     @RequestMapping("/customerlogin")
     @ResponseBody
-    public Response customerLogin(@RequestBody Customer user){
+    public MyResponse customerLogin(@RequestBody Customer user){
         try {
             String s = customerService.customerLogin(user);
-            if (s=="200") return Response.builder().res_code(s).res_msg("登录成功").res_object(user).build();
-            else if (s=="201") return Response.builder().res_code(s).res_msg("账号或者密码错误").res_object(null).build();
-            else return Response.builder().res_code(s).res_msg("没有此账户").res_object(null).build();
+            if (s=="200") return MyResponse.builder().code(s).msg("登录成功").info(user).build();
+            else if (s=="201") return MyResponse.builder().code(s).msg("账号或者密码错误").info(null).build();
+            else return MyResponse.builder().code(s).msg("没有此账户").info(null).build();
         }catch (Exception e){
             logger.info("=====系统出错");
-            return Response.builder().res_code("203").res_msg("系统出错").res_object(null).build();
+            return MyResponse.builder().code("203").msg("系统出错").info(null).build();
         }
+
+    }
+
+    @RequestMapping("/updatecustomerinfo")
+    @ResponseBody
+    public MyResponse updateCustomerInfo(@RequestBody Customer customer){
+        int i = customerService.updateCustomerInfo(customer);
+        Customer customerByEmail = customerService.getCustomerByEmail(customer.getCuemail());
+        return new MyResponse("200","修改成功",customerByEmail);
 
     }
 }

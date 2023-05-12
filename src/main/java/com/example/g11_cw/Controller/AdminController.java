@@ -1,12 +1,11 @@
 package com.example.g11_cw.Controller;
 
 import com.example.g11_cw.Entity.Admin;
-import com.example.g11_cw.Response.Response;
+import com.example.g11_cw.Response.MyResponse;
 import com.example.g11_cw.Service.Interface.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,26 +20,26 @@ public class AdminController {
 
     @RequestMapping("/adminlogin")
     @ResponseBody
-    public Response adminLogin(@RequestBody Admin admin){
+    public MyResponse adminLogin(@RequestBody Admin admin){
         try {
             String s = adminService.adminLogin(admin);
-            if (s=="200") return Response.builder().res_code(s).res_msg("登录成功").res_object(admin).build();
-            else if (s=="201") return Response.builder().res_code(s).res_msg("账号或者密码错误").res_object(null).build();
-            else return Response.builder().res_code(s).res_msg("没有此账户").res_object(null).build();
+            if (s=="200") return MyResponse.builder().code(s).msg("登录成功").info(admin).build();
+            else if (s=="201") return MyResponse.builder().code(s).msg("账号或者密码错误").info(null).build();
+            else return MyResponse.builder().code(s).msg("没有此账户").info(null).build();
         }catch (Exception e){
             logger.info("=====系统出错");
-            return Response.builder().res_code("203").res_msg("系统出错").res_object(null).build();
+            return MyResponse.builder().code("203").msg("系统出错").info(null).build();
         }
     }
 
     @RequestMapping("/updateadmin")
-    public Response updateAdmin(@RequestBody Admin admin){
+    public MyResponse updateAdmin(@RequestBody Admin admin){
         try {
             int i = adminService.updateAdmin(admin);
-            if (i!=0) return new Response("200","修改admin成功",null);
-            else return new Response("201","修改admin失败",null);
+            if (i!=0) return new MyResponse("200","修改admin成功",null);
+            else return new MyResponse("201","修改admin失败",null);
         }catch (Exception e){
-            return Response.builder().res_code("202").res_msg("系统出错").res_object(null).build();
+            return MyResponse.builder().code("202").msg("系统出错").info(null).build();
         }
     }
 

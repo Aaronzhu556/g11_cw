@@ -3,6 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.g11_cw.Mapper.CustomerMapper">
+    <update id="updateCustomerInfo">
+        update customer set
+            cuname=#{cuname},
+            cudescription=#{cudescription},
+            cuaddress=#{cuaddress},
+            cuphone=#{cuphone},
+            cuicon=#{cuicon},
+            cupassword=#{cupassword}
+        where cuid=#{cuid}
+    </update>
 
     <select id="getAllCustomerEmailByServiceId" resultType="com.example.g11_cw.Entity.Customer">
         select cuemail from customer where cuid=#{cuid}
