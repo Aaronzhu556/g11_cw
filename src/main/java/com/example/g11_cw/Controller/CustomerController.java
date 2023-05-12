@@ -19,7 +19,7 @@ public class CustomerController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    @RequestMapping("/getuserbyemail")
+    @RequestMapping("/getcustomerbyemail")
     @ResponseBody
     public MyResponse getCustomerByEmail(@RequestParam String cuemail){
         Customer customer = customerService.getCustomerByEmail(cuemail);

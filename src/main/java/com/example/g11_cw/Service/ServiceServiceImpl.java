@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-
 @org.springframework.stereotype.Service
 public class ServiceServiceImpl implements ServiceService {
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired(required = false)
     private ServiceMapper serviceMapper;

@@ -2,11 +2,13 @@ package com.example.g11_cw.Service.Interface;
 
 import com.example.g11_cw.Entity.Customer;
 import com.example.g11_cw.QueryInfo.QueryInfo;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Component
 public interface CustomerService {
     public Customer getCustomerByEmail(String cuemail);
 

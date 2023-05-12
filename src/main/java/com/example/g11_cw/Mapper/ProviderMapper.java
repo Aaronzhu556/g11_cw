@@ -24,7 +24,7 @@ public interface ProviderMapper {
     Provider getProviderByEmail(String pvemail);
 
 //    int updateProviderRating(int pvid,float service_provider_rating);
-    @Update("update provider set pvis_approved=#{pvis_approved} where service_provider_id=#{pvid}")
+    @Update("update provider set pvis_approved=#{pvis_approved} where pvid=#{pvid}")
     int updateProviderStatus(String pvis_approved,int pvid);
     int deleteProvider(int pvid);
 }
